@@ -31,6 +31,12 @@ public class EmpresaController {
     @Autowired
     private EmpresaService empresaService;
 
+    @GetMapping
+    public ResponseEntity<List<Empresa>> getEmpresas(){
+        List<Empresa> empresas = empresaService.getEmpresas();
+        return ResponseEntity.ok().body(empresas);
+    }
+
     @PostMapping
     public ResponseEntity<Empresa> saveEmpresa(@RequestBody Empresa empresa){
         Empresa newEmpresa = empresaService.save(empresa);

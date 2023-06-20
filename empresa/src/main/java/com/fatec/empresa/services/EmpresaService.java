@@ -16,6 +16,10 @@ public class EmpresaService {
     @Autowired
     private EmpresaRepository empresaRepository;
 
+    public List<Empresa> getEmpresas(){
+        return empresaRepository.findAll();
+    }
+
     public Empresa save(Empresa empresa) {
         return empresaRepository.save(empresa);
     }
