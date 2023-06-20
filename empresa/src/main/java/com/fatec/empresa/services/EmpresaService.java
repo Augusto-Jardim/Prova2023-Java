@@ -16,12 +16,23 @@ public class EmpresaService {
     @Autowired
     private EmpresaRepository empresaRepository;
 
+    public Empresa getEmpresaById(int id){
+        return empresaRepository.findById(id).orElseThrow(
+            () -> new EntityNotFoundException("Empresa não encontrado")
+        );
+    }
+
     public List<Empresa> getEmpresas(){
         return empresaRepository.findAll();
     }
 
     public Empresa save(Empresa empresa) {
         return empresaRepository.save(empresa);
+    }
+
+    public void deleteById(int id) {
+        Empresa empresa = getEmpresaById(id);
+        empresaRepository.delete(empresa);
     }
     
 }

@@ -37,6 +37,12 @@ public class EmpresaController {
         return ResponseEntity.ok().body(empresas);
     }
 
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteEmpresa(@PathVariable int id){
+        empresaService.deleteById(id);
+         return ResponseEntity.noContent().build();
+    }
+
     @PostMapping
     public ResponseEntity<Empresa> saveEmpresa(@RequestBody Empresa empresa){
         Empresa newEmpresa = empresaService.save(empresa);
